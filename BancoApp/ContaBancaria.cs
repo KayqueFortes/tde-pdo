@@ -35,13 +35,16 @@ public class ContaBancaria
         _extrato.Add($"[{DateTime.Now:dd/MM/yyyy HH:mm}] Saque: - R$ {valor:F2} | Saldo: R$ {Saldo:F2}");
     }
 
-    public void Transferir(ContaBancaria destino, decimal valor)
-    {
-        if (destino == null)
-            throw new ArgumentNullException(nameof(destino));
+  public void Transferir(decimal valor, ContaBancaria destino)
+{
+    if (destino == null)
+        throw new ArgumentNullException(nameof(destino));
 
-        Sacar(valor);
-        destino.Depositar(valor);
+    if (Saldo < valor)
+        throw new InvalidOperationException("Saldo insuficiente.");
+
+    Sacar(valor);
+    destino.Depositar(valor);
         _extrato.Add($"[{DateTime.Now:dd/MM/yyyy HH:mm}] Transferência enviada: R$ {valor:F2}");
     }
 
