@@ -64,8 +64,7 @@ while (true)
     Cabecalho("MENU PRINCIPAL");
     Console.WriteLine($"  Bem-vindo(a), {usuario.Nome}!");
     Console.WriteLine($"  Conta: {agencia}");
-    if (usuario.Conta.EstaBloqueada)
-        Console.WriteLine("  ATENÇÃO!  CONTA BLOQUEADA!");
+    
     Espaco();
     Console.WriteLine("  [1] Ver saldo");
     Console.WriteLine("  [2] Depositar");
